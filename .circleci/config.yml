@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: selenium/standalone-chrome:3.1.0
+      - image: circleci/node-jessie-browsers
     steps:
       - checkout
       - run: mvn test
