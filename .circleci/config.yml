@@ -5,7 +5,7 @@ jobs:
       - image: circleci/buildpack-deps:14.04-browsers
     steps:
       - checkout
-      - run: apt-get install maven
+      - run: sudo apt-get install maven
       - run: mvn test
 workflows:
   version: 2
