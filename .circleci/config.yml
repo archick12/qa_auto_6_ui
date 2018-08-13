@@ -1,17 +1,15 @@
 version: 2
 jobs:
-  software_check:
-      - run: java --version
   test:
     docker:
       - image: circleci/buildpack-deps:14.04-browsers
     steps:
       - checkout
+      - run: java --version
       - run: sudo apt-get install maven
       - run: mvn test
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - software_check
       - test
