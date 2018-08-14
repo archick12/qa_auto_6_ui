@@ -6,23 +6,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ManageFiltersPages {
 
-    public void searchButton() {
-        $(By.id("search-filters-tab")).click();
-    }
+    public void clickMyButton() { $(By.id("my-filters-tab")).click(); }
 
-    public void myButton() { $(By.id("my-filters-tab")).click(); }
+    public void clickbuttonSettings(){ $(By.cssSelector("button.aui-button")).click(); }
 
-    public void buttonSettings(){
-        $(By.cssSelector("button.aui-button")).click();
-    }
+    public void clickbuttonDelete(){ $(By.cssSelector("a.delete-filter[tabindex='-1']")).click(); }
 
-    public void buttonDelete(){
-        $(By.cssSelector("a.delete-filter[tabindex='-1']")).click();
-    }
-
-    public void buttonDeleteApprove(){
-        $(By.cssSelector("#delete-filter-submit")).click();
-    }
+    public void clickbuttonDeleteApprove(){ $(By.cssSelector("#delete-filter-submit")).click(); }
 }
 
 
