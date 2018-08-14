@@ -3,8 +3,10 @@ package pages;
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.title;
 
 
 public class SearchPage {
@@ -51,4 +53,9 @@ public class SearchPage {
     public WebElement firstResultInFilterSearch(){ return $(By.cssSelector(".item-label")); }
 
     public void clickNewFilterButton() { $(By.cssSelector("a.new-search.aui-button.aui-button-light")).click(); }
+
+    public boolean atRequiredPage() //проверяет, что мы на searchPage.
+    { Assert.assertEquals(title(), "Issue Navigator - Hillel IT School JIRA");
+        return true;
+    }
 }
