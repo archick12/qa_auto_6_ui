@@ -16,7 +16,7 @@ public class GoogleSearchTest {
 
     open("http://google.com");
     $(By.name("q")).val("selenide").pressEnter();
-    $$("#ires .g").shouldHave(size(10));
+    $$("#ires .g").shouldHave(size(8));
     $("#ires .g").shouldHave(text("selenide.org"));
   }
 }
