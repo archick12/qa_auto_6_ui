@@ -12,10 +12,9 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class UserAvatarPage {
 
-
-    private String userAvatar = "//*[@id=\"details-user-avatar-trigger\"]";
-    private String buttonNewAvatar = "//*[@id=\"jira-avatar-uploader\"]";
-    private String buttonConfirm = "//*[@id=\"avataror\"]/div[3]/div/input";
+    private String userAvatar = "//*[@id='details-user-avatar-trigger']";
+    private String buttonNewAvatar = "//*[@id='jira-avatar-uploader']";
+    private String buttonConfirm = "//*[@id='avataror']/div[3]/div/input";
 
     public static void setClipboard(String str) {
         StringSelection ss = new StringSelection(str);
@@ -26,7 +25,7 @@ public class UserAvatarPage {
         $(By.xpath(userAvatar)).waitUntil(Condition.visible, 3000).click();
     }
 
-    public void UploadNewAvatar() {
+    public void uploadNewAvatar() {
         $(By.xpath(userAvatar)).waitUntil(Condition.visible, 3000).click();
         $(By.xpath(buttonNewAvatar)).waitUntil(Condition.visible, 3000).click();
 
