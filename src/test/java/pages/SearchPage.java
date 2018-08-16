@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.title; //aaa
+import static com.codeborne.selenide.Selenide.title;
 
 
 public class SearchPage {
