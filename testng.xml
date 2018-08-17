@@ -3,7 +3,7 @@
 
 	<test name="Login" group-by-instances="true" verbose="3">
     		<classes>
-		    	<class name="selenide.sample.GoogleSearchTest" />
+
 		    </classes>
 	</test>
 </suite>
