@@ -64,7 +64,7 @@ public class SearchPage {
     public void clickListView(){
         $("a.aui-list-item-link[data-layout-key='list-view']").click(); }
 
-    public void titleTestNewIssue(){
+    public void checkNewIssueTitleDisplayed(){
         $(By.cssSelector("[title='[Test Automation] Test New Issue']")).isDisplayed(); }
 
     public void errorMessageTable(){ $(By.xpath("//div[@class = 'aui-message error']")).isDisplayed(); }

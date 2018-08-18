@@ -17,10 +17,4 @@ public class DashboardPage {
     { Assert.assertEquals(title(), "System Dashboard - Hillel IT School JIRA"); return true; }
 
     public void clickCreateIssueButton() { $(By.id("create_link")).click();}
-
-    public void checkAvailabilityFilter(){
-        $(By.linkText("1 testSaveFilter")).shouldBe(Condition.visible); }
-
-    public void checkMissFilter(){
-        $(By.linkText("1 testSaveFilter")).shouldNotBe(Condition.visible); }
 }
