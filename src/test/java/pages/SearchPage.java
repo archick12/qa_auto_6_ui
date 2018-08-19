@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.title;
 
 
@@ -54,8 +55,24 @@ public class SearchPage {
 
     public void clickNewFilterButton() { $(By.cssSelector("a.new-search.aui-button.aui-button-light")).click(); }
 
-    public boolean atRequiredPage() //проверяет, что мы на searchPage.
-    { Assert.assertEquals(title(), "Issue Navigator - Hillel IT School JIRA");
-        return true;
-    }
+    public void clickButtonChangeViews(){
+        $(".aui-buttons").click();}
+
+    public void clickDetailView(){
+        $("a.aui-list-item-link[data-layout-key='split-view'").click(); }
+
+    public void clickListView(){
+        $("a.aui-list-item-link[data-layout-key='list-view']").click(); }
+
+    public void checkNewIssueTitleDisplayed(){
+        $(By.cssSelector("[title='[Test Automation] Test New Issue']")).isDisplayed(); }
+
+    public void errorMessageTable(){ $(By.xpath("//div[@class = 'aui-message error']")).isDisplayed(); }
+
+    public void errorIcon(){$(By.id("jqlerrormsg")).isDisplayed();}
+
+    public void defaultLabelsStatuses(){$$(By.cssSelector("span.fieldLabel")).shouldHaveSize(4);}
+
+    public void iconEpmtyResults(){$(By.xpath("//div[@class='jira-adbox jira-adbox-medium no-results no-results-message']")).isDisplayed();}
+
 }
