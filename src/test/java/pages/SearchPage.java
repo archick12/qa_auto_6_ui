@@ -18,10 +18,10 @@ public class SearchPage {
 
     public void advancedField(String request){ $(By.name("jql")).setValue(request); }
 
-    public void clicksearchButton(){
+    public void clickSearchButton(){
         $(By.cssSelector("[class='aui-item aui-button aui-button-subtle search-button']")).click(); }
 
-    public void clicksearchProjectButton(){
+    public void clickSearchProjectButton(){
         if($(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).isDisplayed()){ }
         else { $(By.cssSelector("[class='switcher-item active ']")).click(); } }
 
@@ -45,7 +45,8 @@ public class SearchPage {
 
     public void clickFiterTypeIssue(){ $(By.cssSelector("button[data-id='issuetype']")).click(); }
 
-    public void selectEpicFilter(){ $(By.cssSelector("input[value='10000']")).click(); }
+    public void selectEpicFilter(){
+        $(By.cssSelector("input[value='10000']")).shouldBe(Condition.visible).click(); }
 
     public void enterSearchTypeissue(String type){ $(By.cssSelector("button[data-id='issuetype']")).sendKeys(type);}
 
@@ -64,8 +65,7 @@ public class SearchPage {
     public void clickListView(){
         $("a.aui-list-item-link[data-layout-key='list-view']").click(); }
 
-    public void checkNewIssueTitleDisplayed(){
-        $(By.cssSelector("[title='[Test Automation] Test New Issue']")).isDisplayed(); }
+    public void titleTestNewIssue(){ $(By.cssSelector("[title='[Test Automation] Test New Issue']")).isDisplayed(); }
 
     public void errorMessageTable(){ $(By.xpath("//div[@class = 'aui-message error']")).isDisplayed(); }
 
