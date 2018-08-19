@@ -16,8 +16,9 @@ public class DashboardPage {
 
     public void clickSearchOfIssues(){ $("#issues_new_search_link_lnk").click(); }
 
-    public boolean atRequiredPage() //проверяет, что мы на dashboardPage.
-    { Assert.assertEquals(title(), "System Dashboard - Hillel IT School JIRA"); return true; }
+    public boolean atRequiredPage(){
+        return title().equalsIgnoreCase("System Dashboard - Hillel IT School JIRA");
+    }
 
     public void clickCreateIssueButton() { $(By.id("create_link")).click();}
 
