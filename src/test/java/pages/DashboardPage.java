@@ -5,9 +5,12 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
 
 public class DashboardPage {
+
+    private String dashboardPageURL = "http://jira.hillel.it:8080/secure/Dashboard.jspa";
 
     public void clickIssueButton(){ $(By.id("find_link")).click(); }
 
@@ -17,4 +20,8 @@ public class DashboardPage {
     { Assert.assertEquals(title(), "System Dashboard - Hillel IT School JIRA"); return true; }
 
     public void clickCreateIssueButton() { $(By.id("create_link")).click();}
+
+    public void navigate(){
+        open(dashboardPageURL);
+    }
 }
