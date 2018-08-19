@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
 
 public class LoginPage {
+
+    private String loginPageURL = "http://jira.hillel.it:8080/login.jsp";
 
     public void enterLogin(String login){
         $(By.id("login-form-username")).sendKeys(login);
@@ -21,5 +24,9 @@ public class LoginPage {
     public boolean atRequiredPage() //проверяет, что мы на dashboardPage.
     { Assert.assertEquals(title(), "System Dashboard - Hillel IT School JIRA");
         return true;
+    }
+
+    public void navigate(){
+        open(loginPageURL);
     }
 }
