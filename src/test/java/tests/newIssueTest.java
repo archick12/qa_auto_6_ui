@@ -54,6 +54,7 @@ public class newIssueTest {
         issuePage.atRequiredPage();
         issuePage.clickMenuMoreButton();
         issuePage.clickDeleteIssueButton();
+        issuePage.confirmDeleteIssue();
 
         NotificationDialog dialog = new NotificationDialog();
         Assert.assertTrue(dialog.isSuccessDialogDisplayed());
