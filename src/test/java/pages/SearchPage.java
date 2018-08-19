@@ -1,8 +1,11 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -14,7 +17,7 @@ public class SearchPage {
 
     public void clickAdvancedButtonSelenide(){
         if($(By.name("jql")).isDisplayed()){ }
-        else { $(By.cssSelector("a.switcher-item.active ")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
+        else { $(By.xpath("//a[contains(@class, 'switcher-item active ')]")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
         }
     }
 
@@ -26,7 +29,7 @@ public class SearchPage {
     public void clickSearchProjectButton(){
         if($(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).isDisplayed()){ }
         else {
-            $(By.cssSelector("a.switcher-item.active ")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
+            $(By.xpath("//a[contains(@class, 'switcher-item active ')]")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
         }
     }
 
