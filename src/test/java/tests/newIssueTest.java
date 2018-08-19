@@ -48,6 +48,11 @@ public class newIssueTest {
 
     @Test (priority = 10)
     public void deleteCreatedIssue(){
+
         IssuePage issuePage = new IssuePage();
+        issuePage.navigateTo(issueURL);
+        issuePage.atRequiredPage();
+
+
     }
 }
