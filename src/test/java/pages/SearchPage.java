@@ -19,7 +19,7 @@ public class SearchPage {
     public void advancedField(String request){ $(By.name("jql")).setValue(request); }
 
     public void clickSearchButton(){
-        $(By.cssSelector("[class='aui-item aui-button aui-button-subtle search-button']")).click(); }
+        $(By.cssSelector("button.aui-item.aui-button.aui-button-subtle.search-button")).click(); }
 
     public void clickSearchProjectButton(){
         if($(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).isDisplayed()){ }
@@ -73,6 +73,8 @@ public class SearchPage {
 
     public void defaultLabelsStatuses(){$$(By.cssSelector("span.fieldLabel")).shouldHaveSize(4);}
 
-    public void iconEpmtyResults(){$(By.xpath("//div[@class='jira-adbox jira-adbox-medium no-results no-results-message']")).isDisplayed();}
+    public void iconEpmtyResults(){
+        $(By.cssSelector("div.jira-adbox.jira-adbox-medium.no-results.no-results-message")).shouldBe(Condition.visible);
+    }
 
 }

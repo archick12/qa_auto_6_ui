@@ -110,7 +110,7 @@ public class SearchJira {
 
 
     @AfterMethod
-    public void close1(){
+    public void close(){
         WebDriverRunner.getWebDriver().quit();
     }
 
