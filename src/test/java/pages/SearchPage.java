@@ -29,8 +29,7 @@ public class SearchPage {
     public void clickSearchProjectButton(){
         if($(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).isDisplayed()){ }
         else {
-            $(By.xpath("//a[contains(@class, 'switcher-item active ')]")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
-        }
+            $(By.xpath("//a[contains(@class, 'switcher-item active ')]")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click(); }
     }
 
     public void selectProjectQAAUTO6(String request){
