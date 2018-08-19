@@ -18,8 +18,4 @@ public class LoginPage {
 
     public void clickSubmitButton(){ $(By.id("login-form-submit")).click(); }
 
-    public boolean atRequiredPage() //проверяет, что мы на dashboardPage.
-    { Assert.assertEquals(title(), "System Dashboard - Hillel IT School JIRA");
-        return true;
-    }
 }

@@ -33,10 +33,11 @@ public class SearchJira {
             loginPage.enterLogin(ConfigProperties.getTestProperty("LoginWebinar5"));
             loginPage.enterPassword(ConfigProperties.getTestProperty("PasswordWebinar5"));
             loginPage.clickSubmitButton();
-            loginPage.atRequiredPage();}
+            }
 
     @Test
     public void testValidJQL(){
+        dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickAdvancedButtonSelenide();
@@ -47,6 +48,7 @@ public class SearchJira {
 
     @Test
     public void testCheckingOfProjectFilter(){
+        dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
@@ -56,6 +58,7 @@ public class SearchJira {
 
     @Test
     public void testInvalidJQL() {
+        dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickAdvancedButtonSelenide();
@@ -67,6 +70,7 @@ public class SearchJira {
 
     @Test
     public void uncheckTheBoxes(){
+        dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
@@ -82,6 +86,7 @@ public class SearchJira {
 
     @Test
     public void checkingOfNewFilterButton(){
+        dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
@@ -94,6 +99,7 @@ public class SearchJira {
 
     @Test
     public void epmtyResultsIssue() {
+        dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickAdvancedButtonSelenide();
