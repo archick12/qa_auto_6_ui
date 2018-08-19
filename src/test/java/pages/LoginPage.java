@@ -6,6 +6,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LoginPage {
 
@@ -21,9 +22,8 @@ public class LoginPage {
 
     public void clickSubmitButton(){ $(By.id("login-form-submit")).click(); }
 
-    public boolean atRequiredPage() //проверяет, что мы на dashboardPage.
-    { Assert.assertEquals(title(), "System Dashboard - Hillel IT School JIRA");
-        return true;
+    public boolean atRequiredPage(){
+        return url().equalsIgnoreCase(loginPageURL);
     }
 
     public void navigate(){
