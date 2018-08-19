@@ -44,6 +44,10 @@ public class IssuePage {
         $(byId("delete-issue")).click();
     }
 
+    public void confirmDeleteIssue(){
+        $(byId("delete-issue-submit")).click();
+    }
+
     public void enterTextToTextarea(String text){
         $(byXpath(commentTextAreaXPath)).sendKeys(text);
     }

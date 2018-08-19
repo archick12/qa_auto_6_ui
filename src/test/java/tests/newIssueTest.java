@@ -46,13 +46,16 @@ public class newIssueTest {
         Assert.assertTrue(dialog.isSuccessDialogDisplayed());
     }
 
-    @Test (priority = 10)
+    @Test (priority = 2)
     public void deleteCreatedIssue(){
 
         IssuePage issuePage = new IssuePage();
         issuePage.navigateTo(issueURL);
         issuePage.atRequiredPage();
+        issuePage.clickMenuMoreButton();
+        issuePage.clickDeleteIssueButton();
 
-
+        NotificationDialog dialog = new NotificationDialog();
+        Assert.assertTrue(dialog.isSuccessDialogDisplayed());
     }
 }
