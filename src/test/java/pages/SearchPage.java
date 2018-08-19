@@ -14,7 +14,9 @@ public class SearchPage {
 
     public void clickAdvancedButtonSelenide(){
         if($(By.name("jql")).isDisplayed()){ }
-        else { $(By.cssSelector("a.switcher-item.active ")).shouldBe(Condition.visible).click(); } }
+        else { $(By.cssSelector("a.switcher-item.active ")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
+        }
+    }
 
     public void advancedField(String request){ $(By.name("jql")).setValue(request); }
 
@@ -23,7 +25,10 @@ public class SearchPage {
 
     public void clickSearchProjectButton(){
         if($(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).isDisplayed()){ }
-        else { $(By.cssSelector("a.switcher-item.active ")).shouldBe(Condition.visible).click(); } }
+        else {
+            $(By.cssSelector("a.switcher-item.active ")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
+        }
+    }
 
     public void selectProjectQAAUTO6(String request){
         $(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).click();
