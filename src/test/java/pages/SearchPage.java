@@ -23,7 +23,7 @@ public class SearchPage {
 
     public void clickSearchProjectButton(){
         if($(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).isDisplayed()){ }
-        else { $(By.cssSelector("[class='switcher-item active ']")).shouldBe(Condition.visible).click(); } }
+        else { $(By.cssSelector(".switcher-item active")).shouldBe(Condition.visible).click(); } }
 
     public void selectProjectQAAUTO6(String request){
         $(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).click();
