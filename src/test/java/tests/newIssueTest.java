@@ -1,14 +1,14 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.DashboardPage;
-import pages.LoginPage;
-import pages.NewIssuePage;
+import pages.*;
 
 public class newIssueTest {
 
     private String issueKey = "";
+    private String issueURL = "";
 
     @BeforeTest
     public void setup(){
@@ -22,7 +22,7 @@ public class newIssueTest {
 
     }
 
-    @Test
+    @Test (priority = 1)
     public void createNewIssueTest(){
 
         DashboardPage dashboardPage = new DashboardPage();
@@ -37,6 +37,17 @@ public class newIssueTest {
         newIssuePage.clickAssignToMe();
         newIssuePage.clickCreateButton();
 
+        NotificationDialog dialog = new NotificationDialog();
+        issueKey = dialog.getCreatedIssueKey();
+        issueURL = dialog.getCreatedIssueLink();
 
+        System.out.println("Issue " + issueKey + " created \nURL: " + issueURL + "\n");
+
+        Assert.assertTrue(dialog.isSuccessDialogDisplayed());
+    }
+
+    @Test (priority = 10)
+    public void deleteCreatedIssue(){
+        IssuePage issuePage = new IssuePage();
     }
 }
