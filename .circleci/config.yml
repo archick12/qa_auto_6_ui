@@ -13,6 +13,7 @@ jobs:
                 destination: tr1
       - store_test_results:
                 path: build/reports/tests
+                destination: tr2
 workflows:
   version: 2
   build_and_test:
