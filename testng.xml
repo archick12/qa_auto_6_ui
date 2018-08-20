@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="BLR_Analytics" verbose="10" parallel="tests">
 
-	<test name="Login" group-by-instances="true" verbose="3">
+	<test name="Search in Jira" group-by-instances="true" verbose="3">
     		<classes>
-
+				<class name="tests.SearchJira"/>
 		    </classes>
 	</test>
 </suite>
