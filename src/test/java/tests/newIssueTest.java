@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.*;
 
-public class newIssueTest {
+public class NewIssueTest {
 
     private String issueKey = "";
     private String issueURL = "";
