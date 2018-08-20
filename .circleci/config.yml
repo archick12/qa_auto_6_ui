@@ -9,11 +9,9 @@ jobs:
       - run: sudo apt-get install maven
       - run: mvn test
       - store_artifacts:
+                path: build/reports/tests
                 path: target/surefire-reports
                 destination: tr1
-      - store_test_results:
-                path: build/reports/tests
-                destination: tr2
 workflows:
   version: 2
   build_and_test:
