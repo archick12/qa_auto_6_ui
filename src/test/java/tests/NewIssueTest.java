@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -12,6 +13,8 @@ public class NewIssueTest {
 
     @BeforeTest
     public void setup(){
+
+        Configuration.browser = "chrome";
 
         LoginPage loginPage = new LoginPage();
         loginPage.navigate();
