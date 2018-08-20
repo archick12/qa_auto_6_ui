@@ -1,8 +1,11 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -13,17 +16,27 @@ import static com.codeborne.selenide.Selenide.title;
 public class SearchPage {
 
     public void clickAdvancedButtonSelenide(){
+        if ($(By.cssSelector("span.aui-icon.icon-close")).isDisplayed()){
+            $(By.cssSelector("span.aui-icon.icon-close")).click();}
+        else{}
         if($(By.name("jql")).isDisplayed()){ }
-        else { $(By.cssSelector("[class='switcher-item active ']")).click(); } }
+        else { $(By.xpath("//a[contains(@class, 'switcher-item active ')]")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click();
+        }
+    }
 
     public void advancedField(String request){ $(By.name("jql")).setValue(request); }
 
-    public void clicksearchButton(){
-        $(By.cssSelector("[class='aui-item aui-button aui-button-subtle search-button']")).click(); }
+    public void clickSearchButton(){
+        $(By.cssSelector("button.aui-item.aui-button.aui-button-subtle.search-button")).click(); }
 
-    public void clicksearchProjectButton(){
+    public void clickSearchProjectButton(){
+        if ($(By.cssSelector("span.aui-icon.icon-close")).isDisplayed()){
+            $(By.cssSelector("span.aui-icon.icon-close")).click();}
+            else{}
         if($(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).isDisplayed()){ }
-        else { $(By.cssSelector("[class='switcher-item active ']")).click(); } }
+        else {
+            $(By.xpath("//a[contains(@class, 'switcher-item active ')]")).shouldBe(Condition.visible).shouldBe(Condition.enabled).click(); }
+    }
 
     public void selectProjectQAAUTO6(String request){
         $(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).click();
@@ -45,7 +58,8 @@ public class SearchPage {
 
     public void clickFiterTypeIssue(){ $(By.cssSelector("button[data-id='issuetype']")).click(); }
 
-    public void selectEpicFilter(){ $(By.cssSelector("input[value='10000']")).click(); }
+    public void selectEpicFilter(){
+        $(By.cssSelector("input[value='10000']")).shouldBe(Condition.visible).click(); }
 
     public void enterSearchTypeissue(String type){ $(By.cssSelector("button[data-id='issuetype']")).sendKeys(type);}
 
@@ -64,8 +78,7 @@ public class SearchPage {
     public void clickListView(){
         $("a.aui-list-item-link[data-layout-key='list-view']").click(); }
 
-    public void checkNewIssueTitleDisplayed(){
-        $(By.cssSelector("[title='[Test Automation] Test New Issue']")).isDisplayed(); }
+    public void titleTestNewIssue(){ $(By.cssSelector("[title='[Test Automation] Test New Issue']")).isDisplayed(); }
 
     public void errorMessageTable(){ $(By.xpath("//div[@class = 'aui-message error']")).isDisplayed(); }
 
@@ -73,6 +86,8 @@ public class SearchPage {
 
     public void defaultLabelsStatuses(){$$(By.cssSelector("span.fieldLabel")).shouldHaveSize(4);}
 
-    public void iconEpmtyResults(){$(By.xpath("//div[@class='jira-adbox jira-adbox-medium no-results no-results-message']")).isDisplayed();}
+    public void iconEpmtyResults(){
+        $(By.cssSelector("div.jira-adbox.jira-adbox-medium.no-results.no-results-message")).shouldBe(Condition.visible);
+    }
 
 }
