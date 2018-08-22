@@ -16,7 +16,7 @@ public class NewIssuePage {
     private String createButtonID = "create-issue-submit";
 
     public boolean atRequiredPage () {
-        $(byId("create-issue-dialog")).should(Condition.visible);
+        $(byId("create-issue-dialog")).waitUntil(Condition.visible,10000);
         return true;
     }
     public  void enterProjectName(String projectName){
