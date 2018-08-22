@@ -49,7 +49,7 @@ public class NewIssueTest {
         Assert.assertTrue(dialog.isSuccessDialogDisplayed());
     }
 
-    @Test (priority = 2)
+    @Test (dependsOnMethods = {"createNewIssueTest"})
     public void deleteCreatedIssue(){
 
         IssuePage issuePage = new IssuePage();
