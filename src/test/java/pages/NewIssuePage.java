@@ -11,12 +11,12 @@ public class NewIssuePage {
     private String inputIssueTypeID = "issuetype-field";
     private String inputSummaryID = "summary";
     private String inputDescriptionID = "description";
-    private String clickTextTabButtonXpath = "//*[@class=\"tabs-menu\"]/li[2]";
+    private String clickTextTabButtonXpath = "//*[@class='tabs-menu']/li[2]";
     private String assignToMeButtonID = "assign-to-me-trigger";
     private String createButtonID = "create-issue-submit";
 
     public boolean atRequiredPage () {
-        $(byXpath("//*[@id=\"create-issue-dialog\"]/div[1]/h2")).should(Condition.visible);
+        $(byId("create-issue-dialog")).should(Condition.visible);
         return true;
     }
     public  void enterProjectName(String projectName){
