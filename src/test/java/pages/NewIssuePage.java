@@ -7,41 +7,36 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class NewIssuePage {
-    private String inputProjectID = "project-field";
-    private String inputIssueTypeID = "issuetype-field";
-    private String inputSummaryID = "summary";
-    private String inputDescriptionID = "description";
-    private String clickTextTabButtonXpath = "//*[@class=\"tabs-menu\"]/li[2]";
-    private String assignToMeButtonID = "assign-to-me-trigger";
-    private String createButtonID = "create-issue-submit";
+
+    private String textTabButtonID = "aui-uid-3";
 
     public boolean atRequiredPage () {
-        $(byXpath("//*[@id=\"create-issue-dialog\"]/div[1]/h2")).should(Condition.visible);
+        $(byId("create-issue-dialog")).waitUntil(Condition.visible,10000);
         return true;
     }
     public  void enterProjectName(String projectName){
-        $(byId(inputProjectID)).setValue(projectName).pressEnter();
+        $(byId("project-field")).setValue(projectName).pressEnter();
     }
     public  void enterIssueType(String issueType){
-        $(byId(inputIssueTypeID)).setValue(issueType).pressEnter();
+        $(byId("issuetype-field")).setValue(issueType).pressEnter();
     }
     public  void enterSummary(String summary){
-        $(byId(inputSummaryID)).clear();
-        $(byId(inputSummaryID)).setValue(summary);
+        $(byId("summary")).clear();
+        $(byId("summary")).setValue(summary);
     }
     public  void enterDescription(String description){
-        $(byXpath(clickTextTabButtonXpath)).click();
-        $(byId(inputDescriptionID)).clear();
-        $(byId(inputDescriptionID)).setValue(description);
+        $(byId(textTabButtonID)).click();
+        $(byId("description")).clear();
+        $(byId("description")).setValue(description);
     }
     public void clickAssignToMe(){
-        $(byId(assignToMeButtonID)).click();
+        $(byId("assign-to-me-trigger")).click();
     }
     public void clickCreateButton(){
-        $(byId(createButtonID)).click();
+        $(byId("create-issue-submit")).click();
     }
     public boolean isIssueCreated () {
-        $(byXpath("//*[@id=\"create-issue-dialog\"]/div[1]/h2")).shouldNot(Condition.visible); // проверяет, что после нажатия кнопки, окно закрылось.
+        $(byXpath("//*[@id='create-issue-dialog']")).shouldNot(Condition.visible);
          return true;
     }
 }
