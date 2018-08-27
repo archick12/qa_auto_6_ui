@@ -1,11 +1,13 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ElementsCollection;
 import org.openqa.selenium.WebElement;
+
+import java.util.Collection;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class KanbanBoardPage {
@@ -25,6 +27,12 @@ public class KanbanBoardPage {
     }
 
     public WebElement getIssueBlock(String issueKey){
-        return $(byXpath("//a[@title='" + issueKey + "']")); //  //div[@data-issue-key='" + issueKey + "']
+        return $(byXpath("//div[@data-issue-key='" + issueKey + "']"));
+    }
+
+    public WebElement getGhxColumnByName(String name){
+        String columnId = $(byXpath("//h2[contains(text(),'" + name + "')]//ancestor::li")).getAttribute("data-id");
+
+        return $(byXpath("//li[@data-column-id='" + columnId  + "']"));
     }
 }

@@ -4,10 +4,12 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.KanbanBoardPage;
 import pages.LoginPage;
+import pages.NotificationDialog;
 
 public class KanbanBoardTest {
 
@@ -42,12 +44,10 @@ public class KanbanBoardTest {
         Actions actions = new Actions(WebDriverRunner.getWebDriver());
 
         actions.dragAndDropBy(kanbanPage.getIssueBlock(issueKey),500,200).perform();
+//        actions.dragAndDrop(kanbanPage.getIssueBlock(issueKey),kanbanPage.getGhxColumnByName("Development")).perform();
 
+        NotificationDialog dialog = new NotificationDialog();
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Assert.assertTrue(dialog.isSuccessDialogDisplayed());
     }
 }
