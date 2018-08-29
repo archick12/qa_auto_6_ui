@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.List;
+
+import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.title;
@@ -90,4 +95,18 @@ public class SearchPage {
         $(By.cssSelector("div.jira-adbox.jira-adbox-medium.no-results.no-results-message")).shouldBe(Condition.visible);
     }
 
+    public void searchResultsContains(String request){
+        $(".focused").shouldBe(Condition.visible).shouldHave(attribute("data-key")).shouldHave(text(request));
+    }
+
+    public void selectProject(String request){
+        $(By.cssSelector(".criteria-selector.aui-button.aui-button-subtle.drop-arrow")).click();
+        $(By.id("searcher-pid-input")).setValue(request);
+        $(By.cssSelector("label[title='" +request+"']")).click(); }
+
+    public void searchResultsTypeContains(String request){
+        $(".list-content").shouldBe(Condition.visible).$("img").shouldHave(attribute("alt", request)); }
+
+    public List<SelenideElement> issueListContainType(){
+        return $(".list-content").shouldBe(Condition.visible).$$("img");}
 }
