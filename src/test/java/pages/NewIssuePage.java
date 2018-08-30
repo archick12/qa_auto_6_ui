@@ -8,8 +8,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class NewIssuePage {
 
-    private String textTabButtonID = "aui-uid-3";
-
     public boolean atRequiredPage () {
         $(byId("create-issue-dialog")).waitUntil(Condition.visible,10000);
         return true;
@@ -25,7 +23,7 @@ public class NewIssuePage {
         $(byId("summary")).setValue(summary);
     }
     public  void enterDescription(String description){
-        $(byId(textTabButtonID)).click();
+        $(byXpath("//li[@data-mode='source']/a")).click();
         $(byId("description")).clear();
         $(byId("description")).setValue(description);
     }
