@@ -81,10 +81,10 @@ public class SearchJira {
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
         searchPage.selectProjectQAAUTO6("QAAUTO-6");
-        searchPage.clickFiterTypeIssue();
+        searchPage.clickFilterTypeIssue();
         searchPage.selectEpicFilter();
         searchPage.clickSomePlace();
-        searchPage.clickFiterTypeIssue();
+        searchPage.clickFilterTypeIssue();
         searchPage.selectEpicFilter();
         searchPage.uncheckSearchProjectFindProjects();
         searchPage.defaultLabelsStatuses();
@@ -97,7 +97,7 @@ public class SearchJira {
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
         searchPage.selectProjectQAAUTO6("QAAUTO-6");
-        searchPage.clickFiterTypeIssue();
+        searchPage.clickFilterTypeIssue();
         searchPage.selectEpicFilter();
         searchPage.clickNewFilterButton();
         searchPage.defaultLabelsStatuses();
@@ -124,7 +124,7 @@ public class SearchJira {
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
-        searchPage.selectProjectQAAUTO6("QAAUTO-6");
+        searchPage.selectProject("QAAUTO-6");
         searchPage.searchResultsContains("QAAUT6");
         searchPage.clickSaveAsButton();
         searchPage.enterFilterName("1 testSaveFilter");
@@ -141,13 +141,13 @@ public class SearchJira {
         searchPage.clickSearchProjectButton();
         searchPage.selectProject("QAAUTO-6");
         searchPage.searchResultsContains("QAAUT6");
-        searchPage.clickFiterTypeIssue();
+        searchPage.clickFilterTypeIssue();
         searchPage.selectEpicFilter();
-        searchPage.clickFiterTypeIssue();
+        searchPage.clickFilterTypeIssue();
         searchPage.clickButtonChangeViews();
         searchPage.clickDetailView();
-        searchPage.searchResultsTypeContains("Epic");
-        List<SelenideElement> listImg = searchPage.issueListContainType();
+        searchPage.checkTypeOfFirstPositionInIssueList("Epic");
+        List<SelenideElement> listImg = searchPage.fullListSelenideElementsImg();
         for (WebElement element : listImg) {
             Assert.assertEquals(element.getAttribute("alt"), "Epic");
         }
@@ -155,7 +155,7 @@ public class SearchJira {
 
     @Test
     public void testJiraCoreHelpPageOpenNewTab(){
-        dashboardPage.dashboardPage();
+        dashboardPage.atDashboardPage();
         String handleDashboard= getWebDriver().getWindowHandle();
         dashboardPage.clickHelpMenu();
         dashboardPage.clickJiraCoreHelp();
@@ -164,7 +164,7 @@ public class SearchJira {
         handles.remove(handleDashboard);
         String handleJavaCoreHelp=handles.iterator().next();
         getWebDriver().switchTo().window(handleJavaCoreHelp);
-        dashboardPage.jiraCoreHelpPage();
+        dashboardPage.atJiraCoreHelpPage();
     }
 
     @AfterMethod

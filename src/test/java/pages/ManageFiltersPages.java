@@ -19,12 +19,12 @@ public class ManageFiltersPages {
     public void checkAvailabilityFilter(String request){
         $(By.linkText(request)).shouldBe(Condition.visible); }
 
-    public void checkMissFilter(){
-        $(By.linkText("1 testSaveFilter")).shouldNotBe(Condition.visible); }
+    public void checkMissFilter(String filterName){
+        $(By.linkText(filterName)).shouldNotBe(Condition.visible); }
 
-    public void deleteFilterIfExist(String request){
+    public void deleteFilterIfExist(String filterName){
         $(".aui-page-panel-content").$(By.className("aui-page-header-main")).shouldHave(text("My Filters"));
-        if ($(By.linkText(request)).isDisplayed()){
+        if ($(By.linkText(filterName)).isDisplayed()){
             clickbuttonSettings();
             clickbuttonDelete();
             clickbuttonDeleteApprove();}

@@ -61,8 +61,7 @@ public class SearchPage {
 
     public void clickfindFiltersButton(){ $(By.cssSelector(".find-filters")).click(); }
 
-    public void clickFiterTypeIssue(){ $(By.cssSelector("button[data-id='issuetype']")).click(); }
-
+    public void clickFilterTypeIssue(){ $(By.cssSelector("button[data-id='issuetype']")).click(); }
     public void selectEpicFilter(){
         $(By.cssSelector("input[value='10000']")).shouldBe(Condition.visible).click(); }
 
@@ -96,7 +95,7 @@ public class SearchPage {
     }
 
     public void searchResultsContains(String request){
-        $(".focused").shouldBe(Condition.visible).shouldHave(attribute("data-key")).shouldHave(text(request));
+        $(By.className("focused")).shouldBe(Condition.visible).shouldHave(attribute("data-key")).shouldHave(text(request));
     }
 
     public void selectProject(String request){
@@ -104,9 +103,13 @@ public class SearchPage {
         $(By.id("searcher-pid-input")).setValue(request);
         $(By.cssSelector("label[title='" +request+"']")).click(); }
 
-    public void searchResultsTypeContains(String request){
-        $(".list-content").shouldBe(Condition.visible).$("img").shouldHave(attribute("alt", request)); }
+    public SelenideElement issueList(){
+        return  $(".list-content").shouldBe(Condition.visible);
+    }
 
-    public List<SelenideElement> issueListContainType(){
-        return $(".list-content").shouldBe(Condition.visible).$$("img");}
+    public void checkTypeOfFirstPositionInIssueList(String request){
+        issueList().$("img").shouldHave(attribute("alt", request)); }
+
+    public List<SelenideElement> fullListSelenideElementsImg(){
+        return issueList().$$("img");}
 }

@@ -34,11 +34,11 @@ public class DashboardPage {
     public void clickJiraCoreHelp()
     {$(By.id("view_core_help")).shouldBe(visible).click();}
 
-    public void jiraCoreHelpPage(){
+    public void atJiraCoreHelpPage(){
         $("a.cac-header-logo.logo").shouldHave(visible, text("Jira Core Support"));
     }
 
-    public void dashboardPage(){
+    public void atDashboardPage(){
         $(".aui-page-header-main").shouldHave(visible, text("System Dashboard"));
     }
 }
