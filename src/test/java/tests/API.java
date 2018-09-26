@@ -82,7 +82,7 @@ public class API {
 
         String fieldsSummary = "The Issue was create via API test";
         String issueTypeId = "10105";
-        String assigneeName = "Klepikov_Vjacheslav";
+        String assigneeName = "Webinar5";
 
         JSONObject issueCreate = new JSONObject();
         JSONObject fields = new JSONObject();
