@@ -1,6 +1,9 @@
-package tests.api;
+package java.tests.api;
 
+import api.JiraApiActions;
+import api.JiraApiJsonFixture;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.json.simple.JSONObject;
 import org.testng.annotations.AfterTest;
@@ -10,94 +13,51 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 
 public class API {
-    String username = "webinar5";
-    String password = "webinar5";
-    String sessionId;
-    String issueId;
-    String commentId;
-    String projectKey="QAAUT6";
+  String issueId;
 
-    @BeforeSuite(groups = {"API"})
-    public void setupMethod(){
-        RestAssured.baseURI = "http://jira.hillel.it";
-        RestAssured.port = 8080;
-        JSONObject login = new JSONObject();
-        login.put("username",username);
-        login.put("password",password);
+  @BeforeSuite(groups = {"API"})
+  public void setupMethod() {
 
-        sessionId = given().
-                header("Content-Type", "application/json").
-                body(login.toString()).
-                when().
-                post("/rest/auth/1/session").
-                then().
-                extract().path("session.value");
-    }
+  }
 
-    @Test(priority = 1, groups = {"API"})
-    public void loginJira(){
-        ValidatableResponse response = given().
-                header("Content-Type", "application/json").
-                header("Cookie", "JSESSIONID=" + sessionId).
-                when().
-                get("rest/api/2/issue/createmeta").
-                then().
-                statusCode(200);
+  @Test(priority = 1, groups = {"API"})
+  public void loginJira() {
+    JiraApiActions jiraApiActions = new JiraApiActions();
+    ValidatableResponse response = jiraApiActions.login(JiraApiJsonFixture.login("webinar5", "webinar5"));
+    response.statusCode(201);
+    response.contentType(ContentType.JSON);
+  }
 
-        String issueKey = response.extract().asString();
-    }
+  @Test(groups = {"API"})
+  public void createIssueTest() {
 
-    @Test(groups = {"API"})
-    public void createIssueTest() {
+    JiraApiActions jiraApiActions = new JiraApiActions();
+    ValidatableResponse response = jiraApiActions.createIssue();
 
-        String fieldsSummary = "The Issue was create via API test";
-        String issueTypeId = "10105";
-        String assigneeName = "Webinar5";
+    response.statusCode(201); // Code 201: Returns a link to the created issue.
+    response.contentType(ContentType.JSON);
+    issueId = response.extract().path("id");
+    // TODO validate with regex
+  }
 
-        JSONObject issueCreate = new JSONObject();
-        JSONObject fields = new JSONObject();
-        JSONObject project = new JSONObject();
-        JSONObject issueType = new JSONObject();
-        JSONObject assignee = new JSONObject();
-
-        project.put("key", projectKey);
-        issueType.put("id", issueTypeId);
-        assignee.put("name", assigneeName);
-        fields.put("project", project);
-        fields.put("issuetype", issueType);
-        fields.put("assignee", assignee);
-        fields.put("summary", fieldsSummary);
-        issueCreate.put("fields", fields);
-
-        ValidatableResponse response = given().
-                header("Content-Type", "application/json").
-                header("Cookie", "JSESSIONID=" + sessionId).
-                body(issueCreate.toString()).
-                when().
-                post("/rest/api/2/issue").
-                then().
-                statusCode(201); // Code 201: Returns a link to the created issue.
-        issueId = response.extract().path("id");
-    }
-
-    @AfterTest(groups = {"API"})
-    public void deleteIssueTest() {
-        ValidatableResponse responseDelete = given().
-                header("Content-Type", "application/json").
-                header("Cookie", "JSESSIONID=" + sessionId).
-                when().
-                delete("/rest/api/2/issue/" + issueId).
-                then().
-                statusCode(204);  //Code 204: Returned if the issue was successfully removed.
-
-        //Check that issue was delete and not found.
-                given().
-                header("Content-Type", "application/json").
-                header("Cookie", "JSESSIONID=" + sessionId).
-                when().
-                get("/rest/api/2/issue/" + issueId ).
-                then().
-                statusCode(404); //Code 404: Returned if the requested issue was not found, or the user does not have permission to view it.
-    }
+  @AfterTest(groups = {"API"})
+  public void deleteIssueTest() {
+//    ValidatableResponse responseDelete = given().
+//        header("Content-Type", "application/json").
+//        header("Cookie", "JSESSIONID=" + sessionId).
+//        when().
+//        delete("/rest/api/2/issue/" + issueId).
+//        then().
+//        statusCode(204);  //Code 204: Returned if the issue was successfully removed.
+//
+//    //Check that issue was delete and not found.
+//    given().
+//        header("Content-Type", "application/json").
+//        header("Cookie", "JSESSIONID=" + sessionId).
+//        when().
+//        get("/rest/api/2/issue/" + issueId).
+//        then().
+//        statusCode(404); //Code 404: Returned if the requested issue was not found, or the user does not have permission to view it.
+  }
 
 }

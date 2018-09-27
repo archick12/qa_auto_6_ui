@@ -12,7 +12,7 @@ public class LoginTest {
     @Test(groups = {"UI"})
     public void JiraLoginTest(){
 
-        open("http://jira.hillel.it:8080/login.jsp");
+        open("http://jira.hillel.it:8080/defaultLogin.jsp");
         LoginPage loginPage = new LoginPage();
 
         loginPage.enterLogin("webinar5");
