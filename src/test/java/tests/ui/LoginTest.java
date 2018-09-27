@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 
 import org.testng.annotations.Test;
@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.title;
 
 public class LoginTest {
 
-    @Test
+    @Test(groups = {"UI"})
     public void JiraLoginTest(){
 
         open("http://jira.hillel.it:8080/login.jsp");

@@ -95,7 +95,7 @@ public class SearchPage {
     }
 
     public void searchResultsContains(String request){
-        $(By.className("focused")).shouldBe(Condition.visible).shouldHave(attribute("data-key")).shouldHave(text(request));
+        $(By.className("fieldValue")).shouldHave(text(request));
     }
 
     public void selectProject(String request){
