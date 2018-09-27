@@ -22,7 +22,6 @@ public class NewIssueTest {
         loginPage.enterLogin("webinar5");
         loginPage.enterPassword("webinar5");
         loginPage.clickSubmitButton();
-
     }
 
     @Test (priority = 1, groups = {"UI"})

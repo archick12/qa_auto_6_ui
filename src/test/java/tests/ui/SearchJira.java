@@ -23,22 +23,22 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class SearchJira {
 
-        public static LoginPage loginPage;
-        public static SearchPage searchPage;
-        public static DashboardPage dashboardPage;
-        public static ManageFiltersPages manageFiltersPages;
+    public static LoginPage loginPage;
+    public static SearchPage searchPage;
+    public static DashboardPage dashboardPage;
+    public static ManageFiltersPages manageFiltersPages;
 
-        @BeforeMethod(groups = {"UI"})
-        public void setup(){
-            loginPage = new LoginPage();
-            dashboardPage = new DashboardPage();
-            searchPage = new SearchPage();
-            manageFiltersPages = new ManageFiltersPages();
-            Configuration.browser = ConfigProperties.getTestProperty("useBrowser");
-            open(ConfigProperties.getTestProperty("jiraURL"));
-            loginPage.enterLogin(ConfigProperties.getTestProperty("LoginWebinar5"));
-            loginPage.enterPassword(ConfigProperties.getTestProperty("PasswordWebinar5"));
-            loginPage.clickSubmitButton();
+    @BeforeMethod(groups = {"UI"})
+    public void setup(){
+        loginPage = new LoginPage();
+        dashboardPage = new DashboardPage();
+        searchPage = new SearchPage();
+        manageFiltersPages = new ManageFiltersPages();
+        Configuration.browser = ConfigProperties.getTestProperty("useBrowser");
+        open(ConfigProperties.getTestProperty("jiraURL"));
+        loginPage.enterLogin(ConfigProperties.getTestProperty("LoginWebinar5"));
+        loginPage.enterPassword(ConfigProperties.getTestProperty("PasswordWebinar5"));
+        loginPage.clickSubmitButton();
             }
 
     @Test(groups = {"UI"})
@@ -132,7 +132,8 @@ public class SearchJira {
         searchPage.clickfindFiltersButton();
         manageFiltersPages.clickMyButton();
         manageFiltersPages.checkAvailabilityFilter("1 testSaveFilter");
-        manageFiltersPages.deleteFilterIfExist("1 testSaveFilter");}
+        manageFiltersPages.deleteFilterIfExist("1 testSaveFilter");
+        }
 
     @Test(groups = {"UI"})
     public void CheckingProjectFilterEpicType() {
