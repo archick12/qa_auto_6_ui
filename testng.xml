@@ -12,4 +12,10 @@
 			<class name="tests.SearchJira"/>
 		</classes>
 	</test>
+
+    <test name="API" group-by-instances="true" verbose="3">
+        <classes>
+            <class name="tests.API"/>
+        </classes>
+    </test>
 </suite>
