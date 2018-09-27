@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import com.codeborne.selenide.Configuration;
 import org.testng.Assert;
@@ -11,7 +11,7 @@ public class NewIssueTest {
     private String issueKey = "";
     private String issueURL = "";
 
-    @BeforeTest
+    @BeforeTest(groups = {"UI"})
     public void setup(){
 
         Configuration.browser = "chrome";
@@ -25,7 +25,7 @@ public class NewIssueTest {
 
     }
 
-    @Test (priority = 1)
+    @Test (priority = 1, groups = {"UI"})
     public void createNewIssueTest(){
 
         DashboardPage dashboardPage = new DashboardPage();
@@ -49,7 +49,7 @@ public class NewIssueTest {
         Assert.assertTrue(dialog.isSuccessDialogDisplayed());
     }
 
-    @Test (dependsOnMethods = {"createNewIssueTest"})
+    @Test (dependsOnMethods = {"createNewIssueTest"}, groups = {"UI"})
     public void deleteCreatedIssue(){
 
         IssuePage issuePage = new IssuePage();

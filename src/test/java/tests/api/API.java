@@ -1,4 +1,4 @@
-package tests;
+package tests.api;
 
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
@@ -17,7 +17,7 @@ public class API {
     String commentId;
     String projectKey="QAAUT6";
 
-    @BeforeSuite
+    @BeforeSuite(groups = {"API"})
     public void setupMethod(){
         RestAssured.baseURI = "http://jira.hillel.it";
         RestAssured.port = 8080;
@@ -34,7 +34,7 @@ public class API {
                 extract().path("session.value");
     }
 
-    @Test
+    @Test(priority = 1, groups = {"API"})
     public void loginJira(){
         ValidatableResponse response = given().
                 header("Content-Type", "application/json").
@@ -47,37 +47,7 @@ public class API {
         String issueKey = response.extract().asString();
     }
 
-    @Test
-    public void wrongLogin() {
-        JSONObject login = new JSONObject();
-        login.put("username", "blabla");
-        login.put("password", password);
-
-        ValidatableResponse responseWrongPass = given().
-                header("Content-Type", "application/json").
-                body(login.toString()).
-                when().
-                post("/rest/auth/1/session").
-                then().
-                statusCode(401);
-    }
-
-    @Test
-    public void wrongPassword() {
-        JSONObject login = new JSONObject();
-        login.put("username", username);
-        login.put("password", "pass");
-
-        ValidatableResponse responseWrongPass = given().
-                header("Content-Type", "application/json").
-                body(login.toString()).
-                when().
-                post("/rest/auth/1/session").
-                then().
-                statusCode(401);
-    }
-
-    @Test
+    @Test(groups = {"API"})
     public void createIssueTest() {
 
         String fieldsSummary = "The Issue was create via API test";
@@ -110,7 +80,7 @@ public class API {
         issueId = response.extract().path("id");
     }
 
-    @AfterTest
+    @AfterTest(groups = {"API"})
     public void deleteIssueTest() {
         ValidatableResponse responseDelete = given().
                 header("Content-Type", "application/json").

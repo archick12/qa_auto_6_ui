@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="BLR_Analytics" verbose="10" parallel="tests">
 
-	<test name="NewIssue" group-by-instances="true" verbose="3">
-    		<classes>
-				<class name="tests.NewIssueTest" />
-		    </classes>
-	</test>
+	<test name="API and UI tests" group-by-instances="true" verbose="3">
 
-	<test name="Search in Jira" group-by-instances="true" verbose="3">
+		<groups>
+			<run>
+				<include name="API"/>
+				<include name="UI"/>
+			</run>
+		</groups>
+
 		<classes>
-			<class name="tests.SearchJira"/>
+			<class name="tests.api.ApiNegative"/>
+			<class name="tests.api.API"/>
+			<class name="tests.ui.LoginTest"/>
+			<class name="tests.ui.NewIssueTest"/>
+			<class name="tests.ui.SearchJira"/>
 		</classes>
 	</test>
 
-    <test name="API" group-by-instances="true" verbose="3">
-        <classes>
-            <class name="tests.API"/>
-        </classes>
-    </test>
 </suite>

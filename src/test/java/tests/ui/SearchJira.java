@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
@@ -28,7 +28,7 @@ public class SearchJira {
         public static DashboardPage dashboardPage;
         public static ManageFiltersPages manageFiltersPages;
 
-        @BeforeMethod
+        @BeforeMethod(groups = {"UI"})
         public void setup(){
             loginPage = new LoginPage();
             dashboardPage = new DashboardPage();
@@ -41,7 +41,7 @@ public class SearchJira {
             loginPage.clickSubmitButton();
             }
 
-    @Test
+    @Test(groups = {"UI"})
     public void testValidJQL(){
         dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
@@ -52,7 +52,7 @@ public class SearchJira {
         searchPage.titleTestNewIssue();
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void testCheckingOfProjectFilter(){
         dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
@@ -62,7 +62,7 @@ public class SearchJira {
         Assert.assertEquals(searchPage.firstResultInFilterSearch().getAttribute("title"), "QAAUTO-6");
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void testInvalidJQL() {
         dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
@@ -74,7 +74,7 @@ public class SearchJira {
         searchPage.errorMessageTable();
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void uncheckTheBoxes(){
         dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
@@ -90,7 +90,7 @@ public class SearchJira {
         searchPage.defaultLabelsStatuses();
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void checkingOfNewFilterButton(){
         dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
@@ -103,7 +103,7 @@ public class SearchJira {
         searchPage.defaultLabelsStatuses();
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void epmtyResultsIssue() {
         dashboardPage.atRequiredPage();
         dashboardPage.clickIssueButton();
@@ -114,7 +114,7 @@ public class SearchJira {
         searchPage.iconEpmtyResults();
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void testSaveFilter(){
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
@@ -125,7 +125,7 @@ public class SearchJira {
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
         searchPage.selectProject("QAAUTO-6");
-        searchPage.searchResultsContains("QAAUT6");
+        searchPage.searchResultsContains("QAAUTO-6");
         searchPage.clickSaveAsButton();
         searchPage.enterFilterName("1 testSaveFilter");
         searchPage.clickSubmitFilterName();
@@ -134,13 +134,13 @@ public class SearchJira {
         manageFiltersPages.checkAvailabilityFilter("1 testSaveFilter");
         manageFiltersPages.deleteFilterIfExist("1 testSaveFilter");}
 
-    @Test
+    @Test(groups = {"UI"})
     public void CheckingProjectFilterEpicType() {
         dashboardPage.clickIssueButton();
         dashboardPage.clickSearchOfIssues();
         searchPage.clickSearchProjectButton();
         searchPage.selectProject("QAAUTO-6");
-        searchPage.searchResultsContains("QAAUT6");
+        searchPage.searchResultsContains("QAAUTO-6");
         searchPage.clickFilterTypeIssue();
         searchPage.selectEpicFilter();
         searchPage.clickFilterTypeIssue();
@@ -153,7 +153,7 @@ public class SearchJira {
         }
     }
 
-    @Test
+    @Test(groups = {"UI"})
     public void testJiraCoreHelpPageOpenNewTab(){
         dashboardPage.atDashboardPage();
         String handleDashboard= getWebDriver().getWindowHandle();
@@ -167,12 +167,12 @@ public class SearchJira {
         dashboardPage.atJiraCoreHelpPage();
     }
 
-    @AfterMethod
+    @AfterMethod(groups = {"UI"})
     public void close(){
         WebDriverRunner.getWebDriver().quit();
     }
 
-    @AfterSuite
+    @AfterSuite(groups = {"UI"})
     public void printProperties(){
         System.out.println("Browser:" + ConfigProperties.getTestProperty("useBrowser"));
         System.out.println("URL:" + ConfigProperties.getTestProperty("jiraURLr"));
