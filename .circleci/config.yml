@@ -5,7 +5,11 @@ jobs:
       - image: circleci/buildpack-deps:14.04-browsers
     steps:
       - checkout
-      - run: java -version
+      - run:
+               name: Install Java
+               command: |
+                                  sudo purge openjdk
+                                  sudo apt-get install openjdk-8
       - run:
                name: Install Maven 3
                command: |
