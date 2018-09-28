@@ -19,8 +19,8 @@ jobs:
       - run:
                name: Maven
                command: |
-                                  mvn -version
-                                  mvn test
+                                 sudo mvn -version
+                                 sudo mvn test
       - run:
                 name: install dependencies
                 command: |
