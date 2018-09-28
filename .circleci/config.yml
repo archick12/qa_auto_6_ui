@@ -15,7 +15,7 @@ jobs:
                 path: build/reports/tests
                 destination: tr2
 
-      -   run:
+      - run:
                 name: install dependencies
                 command: |
                     wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
@@ -26,13 +26,12 @@ jobs:
                     unzip allure-2.7.0.zip
                     chmod +x ./allure-2.7.0/bin/allure
 
-
-       -   run:
-                            name: generate allure report
-                            command: |
-                                                cd target
-                                                allure generate --clean
-      -   run:
-                      name: analyze with Sonar
-                      command: |
-                                          ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
+       - run:
+                 name: generate allure report
+                 command: |
+                                    cd target
+                                    allure generate --clean
+      - run:
+                 name: analyze with Sonar
+                  command: |
+                                    ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
