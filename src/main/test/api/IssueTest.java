@@ -6,23 +6,17 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-public class API {
-  String issueId;
-  JiraApiActions jiraApiActions;
+public class IssueTest {
 
-  @BeforeSuite(groups = {"API"})
+  private String issueId;
+  private JiraApiActions jiraApiActions;
+
+  @BeforeSuite(groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
   public void setupMethod() {
     jiraApiActions = new JiraApiActions();
   }
 
-  @Test(priority = 1, groups = {"API"})
-  public void loginJira() {
-    ValidatableResponse response = jiraApiActions.login(JiraApiJsonFixture.login("webinar5", "webinar5"));
-    response.statusCode(201);
-    response.contentType(ContentType.JSON);
-  }
-
-  @Test(groups = {"API"})
+  @Test(groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
   public void createIssueTest() {
     ValidatableResponse response = jiraApiActions.createIssue();
     response.statusCode(201); // Code 201: Returns a link to the created issue.
@@ -39,7 +33,7 @@ public class API {
     response.contentType(ContentType.JSON);
   }
 
-  @AfterTest(groups = {"API"})
+  @AfterTest(groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
   public void deleteIssueTest() {
     // TODO add negative scenarios for delete
     // TODO add boundary case scenarios for delete

@@ -11,11 +11,11 @@
 		</groups>
 
 		<classes>
-			<class name="tests.api.ApiNegative"/>
-			<class name="tests.api.API"/>
+			<class name="tests.api.LoginTest"/>
+			<class name="tests.api.IssueTest"/>
 			<class name="tests.ui.LoginTest"/>
 			<class name="tests.ui.NewIssueTest"/>
-			<class name="tests.ui.SearchJira"/>
+			<class name="tests.ui.SearchJiraTest"/>
 		</classes>
 	</test>
 

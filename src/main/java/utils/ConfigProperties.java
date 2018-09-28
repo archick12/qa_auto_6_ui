@@ -14,7 +14,7 @@ public class ConfigProperties {
 
     static {
         try {
-            File file1 = new File("src/test/java/resources/jira.properties");
+            File file1 = new File("src/resources/jira.properties");
             fileInputStream = new FileInputStream(file1);
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
