@@ -6,7 +6,12 @@ jobs:
     steps:
       - checkout
       - run: java -version
-      - run: sudo apt-get install maven3
+      - run:
+               name: Install Maven 3
+               command: |
+                                  sudo add-apt-repository "deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main"
+                                  sudo apt-get update
+                                  sudo apt-get install maven3
       - run: mvn test
       - run:
                 name: install dependencies
