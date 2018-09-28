@@ -9,7 +9,7 @@ jobs:
                name: Install Java
                command: |
                                   sudo apt-get purge openjdk-*
-                                  sudo apt-get install openjdk-8
+                                  sudo apt-get install openjdk-8-jdk
       - run:
                name: Install Maven 3
                command: |
