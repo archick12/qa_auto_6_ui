@@ -25,4 +25,4 @@ jobs:
       -   run:
                       name: analyze with Sonar
                       command: |
-                                          ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner -Dsonar.projectKey=archick12_qa_auto_6_ui   -Dsonar.organization=archick12-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=ef4a6a1cde587e42653e96ce5e30a3723cbe2ec6
+                                          ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
