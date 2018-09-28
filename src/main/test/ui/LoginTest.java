@@ -1,4 +1,4 @@
-package tests.ui;
+package ui;
 
 
 import org.testng.annotations.Test;

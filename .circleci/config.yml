@@ -8,6 +8,7 @@ jobs:
       - run: java -version
       - run: sudo apt-get install maven
       - run: mvn test
+      - run: mvn site
       - store_artifacts:
                 path: target/surefire-reports
                 destination: tr1
