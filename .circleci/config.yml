@@ -5,46 +5,14 @@ jobs:
       - image: circleci/buildpack-deps:14.04-browsers
     steps:
       - checkout
-      - run:
-               name: Install Java
-               command: |
-                                  sudo apt-get purge openjdk-*
-                                  sudo apt-get install openjdk-8-jdk
-      - run:
-               name: Install Maven 3
-               command: |
-                                  sudo apt-get install -y software-properties-common
-                                  echo "DEBUG 1"
-                                  sudo add-apt-repository -y ppa:andrei-pozolotin/maven3
-                                  echo "DEBUG 2"
-                                  sudo apt-get update
-                                  echo "DEBUG 3"
-                                  sudo apt-get install maven3
-      - run:
-               name: Maven
-               command: |
-                                 sudo mvn -version
-                                 sudo mvn test
-      - run:
-                name: install dependencies
-                command: |
-                    wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
-                    unzip sonar-scanner-cli-3.2.0.1227-linux.zip
-                    chmod +x ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner
-                    chmod +x ./sonar-scanner-3.2.0.1227-linux/jre/bin/java
-                    wget https://bintray.com/qameta/generic/download_file?file_path=io%2Fqameta%2Fallure%2Fallure%2F2.7.0%2Fallure-2.7.0.zip -O allure-2.7.0.zip
-                    unzip allure-2.7.0.zip
-                    chmod +x ./allure-2.7.0/bin/allure
-      - run:
-            name: generate allure report
-            command: mvn allure:report
-      - run:
-                 name: analyze with Sonar
-                 command: |
-                                    ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
+      - run: java -version
+      - run: sudo apt-get install maven
+      - run: mvn test
       - store_artifacts:
-                      path: target/
-                      destination: tr1
+                path: target/surefire-reports
+                destination: tr1
+                path: build/reports/tests
+                destination: tr2
 workflows:
   version: 2
   build_and_test:
