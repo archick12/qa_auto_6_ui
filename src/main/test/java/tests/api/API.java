@@ -1,4 +1,4 @@
-package java.tests.api;
+package tests.api;
 
 import api.JiraApiActions;
 import api.JiraApiJsonFixture;
