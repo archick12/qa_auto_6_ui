@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: java -version
-      - run: sudo apt-get install maven
+      - run: sudo apt-get install maven3
       - run: mvn test
       - run:
                 name: install dependencies
