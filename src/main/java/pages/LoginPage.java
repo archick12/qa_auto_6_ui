@@ -8,7 +8,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LoginPage {
 
-    private String loginPageURL = "http://jira.hillel.it:8080/defaultLogin.jsp";
+    private String loginPageURL = "http://jira.hillel.it:8080/login.jsp";
 
     public void enterLogin(String login){
         $(By.id("login-form-username")).sendKeys(login);

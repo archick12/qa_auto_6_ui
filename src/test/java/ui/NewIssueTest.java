@@ -5,13 +5,14 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.*;
+import utils.TestGroups;
 
 public class NewIssueTest {
 
   private String issueKey = "";
   private String issueURL = "";
 
-  @BeforeTest(groups = {"UI"})
+  @BeforeTest(groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
   public void setup() {
 
     Configuration.browser = "chrome";
@@ -24,7 +25,7 @@ public class NewIssueTest {
     loginPage.clickSubmitButton();
   }
 
-  @Test(priority = 1, groups = {"UI"})
+  @Test(priority = 1, groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
   public void createNewIssueTest() {
 
     DashboardPage dashboardPage = new DashboardPage();
@@ -48,7 +49,7 @@ public class NewIssueTest {
     Assert.assertTrue(dialog.isSuccessDialogDisplayed());
   }
 
-  @Test(dependsOnMethods = {"createNewIssueTest"}, groups = {"UI"})
+  @Test(dependsOnMethods = {"createNewIssueTest"}, groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
   public void deleteCreatedIssue() {
 
     IssuePage issuePage = new IssuePage();

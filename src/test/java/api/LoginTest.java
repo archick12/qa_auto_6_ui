@@ -1,15 +1,17 @@
 package api;
 
+import api.JiraApiActions;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import utils.TestGroups;
 
 public class LoginTest {
 
   private JiraApiActions jiraApiActions;
 
-  @BeforeSuite(groups = {TestGroups.LOGIN})
+  @BeforeSuite(groups = {TestGroups.LOGIN, TestGroups.REGRESSION})
   public void setupMethod() {
     jiraApiActions = new JiraApiActions();
   }
@@ -28,10 +30,10 @@ public class LoginTest {
     response.contentType(ContentType.JSON);
   }
 
-  @Test(priority = 1, groups = {TestGroups.LOGIN, TestGroups.REGRESSION})
+  @Test(priority = 1, groups = { TestGroups.LOGIN, TestGroups.REGRESSION })
   public void loginToJira() {
     ValidatableResponse response = jiraApiActions.login(JiraApiJsonFixture.login("webinar5", "webinar5"));
-    response.statusCode(201);
+    response.statusCode(200);
     response.contentType(ContentType.JSON);
   }
 }

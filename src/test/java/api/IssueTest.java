@@ -5,13 +5,14 @@ import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import utils.TestGroups;
 
 public class IssueTest {
 
   private String issueId;
   private JiraApiActions jiraApiActions;
 
-  @BeforeSuite(groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
+  @BeforeSuite(groups = {TestGroups.ISSUE, TestGroups.REGRESSION })
   public void setupMethod() {
     jiraApiActions = new JiraApiActions();
   }
@@ -33,7 +34,7 @@ public class IssueTest {
     response.contentType(ContentType.JSON);
   }
 
-  @AfterTest(groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
+  @AfterTest(groups = { TestGroups.ISSUE, TestGroups.REGRESSION })
   public void deleteIssueTest() {
     // TODO add negative scenarios for delete
     // TODO add boundary case scenarios for delete
