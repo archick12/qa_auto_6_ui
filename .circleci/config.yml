@@ -15,8 +15,11 @@ jobs:
                                   yes Y | sudo add-apt-repository ppa:andrei-pozolotin/maven3
                                   sudo apt-get update
                                   sudo apt-get install -y maven3
+      - run:
+               name: Maven
+               command: |
                                   mvn -version
-      - run: mvn test
+                                  mvn test
       - run:
                 name: install dependencies
                 command: |
