@@ -13,6 +13,10 @@ jobs:
                 destination: tr1
                 path: build/reports/tests
                 destination: tr2
+       -   run:
+                      name: analyze with Sonar
+                      command: |
+                                          mvn sonar:sonar   -Dsonar.projectKey=archick12_qa_auto_6_ui   -Dsonar.organization=archick12-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=ef4a6a1cde587e42653e96ce5e30a3723cbe2ec6
 workflows:
   version: 2
   build_and_test:
