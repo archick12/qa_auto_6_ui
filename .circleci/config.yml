@@ -22,7 +22,16 @@ jobs:
                     unzip sonar-scanner-cli-3.2.0.1227-linux.zip
                     chmod +x ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner
                     chmod +x ./sonar-scanner-3.2.0.1227-linux/jre/bin/java
+                    wget https://bintray.com/qameta/generic/download_file?file_path=io%2Fqameta%2Fallure%2Fallure%2F2.7.0%2Fallure-2.7.0.zip -O allure-2.7.0.zip
+                    unzip allure-2.7.0.zip
+                    chmod +x ./allure-2.7.0/bin/allure
 
+
+       -   run:
+                            name: generate allure report
+                            command: |
+                                                cd target
+                                                allure generate --clean
       -   run:
                       name: analyze with Sonar
                       command: |
