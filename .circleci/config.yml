@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/buildpack-deps:14.04-browsers
     steps:
@@ -38,4 +38,4 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
+      - test
