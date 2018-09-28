@@ -1,8 +1,5 @@
 package api;
 
-
-import io.restassured.internal.RestAssuredResponseImpl;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
 public class JiraApiActions {
@@ -11,6 +8,8 @@ public class JiraApiActions {
 
   String loginPath = "/rest/auth/1/session";
   private static String createIssuePath = "/rest/api/2/issue";
+  private static String deleteIssuePath = "/rest/api/2/issue/%s";
+  private static String getIssuePath = "/rest/api/2/issue/%s";
 
 
   public JiraApiActions() {
@@ -27,9 +26,15 @@ public class JiraApiActions {
     return response;
   }
 
-  public Response deleteIssue() {
-
-    return new RestAssuredResponseImpl();
+  public ValidatableResponse deleteIssue(String issueId) {
+    deleteIssuePath = String.format(deleteIssuePath, issueId);
+    ValidatableResponse response = requestSender.delete(deleteIssuePath, JiraApiJsonFixture.defaultIssue());
+    return response;
   }
 
+  public ValidatableResponse getIssue(String issueId) {
+    getIssuePath = String.format(getIssuePath, issueId);
+    ValidatableResponse response = requestSender.get(getIssuePath);
+    return response;
+  }
 }

@@ -35,6 +35,16 @@ public class HttpRequestSender {
         then();
   }
 
+  public ValidatableResponse delete(String path, String json) {
+    return given().
+        contentType(ContentType.JSON).
+        header("Cookie", "JSESSIONID=" + JSESSIONID).
+        when().
+        body(json).
+        delete(path).
+        then();
+  }
+
   private void authorize() {
     String loginPath = "/rest/auth/1/session";
     JSESSIONID = post(loginPath, JiraApiJsonFixture.defaultLogin()).extract().path("session.value");
