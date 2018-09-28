@@ -15,6 +15,14 @@ jobs:
                 destination: tr2
 
       -   run:
+                name: install dependencies
+                command: |
+                    wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
+                    unzip sonar-scanner-cli-3.2.0.1227-linux.zip
+                    chmod +x ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner
+                    chmod +x ./sonar-scanner-3.2.0.1227-linux/jre/bin/java
+
+      -   run:
                       name: analyze with Sonar
                       command: |
-                                          mvn sonar:sonar   -Dsonar.projectKey=archick12_qa_auto_6_ui   -Dsonar.organization=archick12-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=ef4a6a1cde587e42653e96ce5e30a3723cbe2ec6
+                                          ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner -Dsonar.projectKey=archick12_qa_auto_6_ui   -Dsonar.organization=archick12-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=ef4a6a1cde587e42653e96ce5e30a3723cbe2ec6
