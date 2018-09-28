@@ -9,12 +9,12 @@ jobs:
       - run:
                name: Install Maven 3
                command: |
-                                  sudo apt-get purge maven maven2
+                                  sudo apt-get purge maven maven2 maven3
                                   sudo apt-get update
-                                  yes '' | sudo apt-get install software-properties-common
+                                  sudo apt-get install -y software-properties-common
                                   yes '' | sudo add-apt-repository ppa:andrei-pozolotin/maven3
                                   sudo apt-get update
-                                  yes '' | sudo apt-get install maven3
+                                  sudo apt-get install -y maven3
                                   mvn -version
       - run: mvn test
       - run:
