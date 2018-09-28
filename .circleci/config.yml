@@ -10,9 +10,11 @@ jobs:
                name: Install Maven 3
                command: |
                                   sudo apt-get install -y software-properties-common
+                                  echo "DEBUG 1"
                                   yes Y | sudo add-apt-repository ppa:andrei-pozolotin/maven3
+                                  echo "DEBUG 2"
                                   sudo apt-get update
-                                  echo "DEBUG"
+                                  echo "DEBUG 3"
                                   sudo apt-get install maven3
       - run:
                name: Maven
