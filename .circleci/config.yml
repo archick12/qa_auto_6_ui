@@ -9,12 +9,6 @@ jobs:
       - run: sudo apt-get install maven
       - run: mvn test
       - run: mvn site
-      - store_artifacts:
-                path: target/surefire-reports
-                destination: tr1
-                path: build/reports/tests
-                destination: tr2
-
       - run:
                 name: install dependencies
                 command: |
@@ -32,5 +26,10 @@ jobs:
                                     allure generate --clean
       - run:
                  name: analyze with Sonar
-                  command: |
+                 command: |
                                     ./sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner -Dsonar.host.url=https://sonarcloud.io
+      - store_artifacts:
+                      path: target/surefire-reports
+                      destination: tr1
+                      path: build/reports/tests
+                      destination: tr2
