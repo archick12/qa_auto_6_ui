@@ -14,7 +14,7 @@ jobs:
                                   sudo apt-get install -y software-properties-common
                                   yes Y | sudo add-apt-repository ppa:andrei-pozolotin/maven3
                                   sudo apt-get update
-                                  sudo apt-get install -y maven3
+                                  sudo apt-get install maven3
       - run:
                name: Maven
                command: |
