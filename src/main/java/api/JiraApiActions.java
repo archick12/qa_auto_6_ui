@@ -22,7 +22,7 @@ public class JiraApiActions {
     return response;
   }
 
-  @Step
+  @Step("Step description")
   public ValidatableResponse createIssue() {
     ValidatableResponse response = requestSender.post(createIssuePath, JiraApiJsonFixture.defaultIssue());
     return response;

@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="QA Auto 6" verbose="10" parallel="tests">
 
+    <listeners>
+        <listener class-name="utils.TestNGTestListener" />
+    </listeners>
+
     <test name="API and UI tests" group-by-instances="true" verbose="3">
 
         <groups>
             <run>
-                <include name="regression"/>
-                <include name="functional"/>
+                <!--<include name="regression"/>-->
+                <!--<include name="functional"/>-->
                 <include name="login"/>
             </run>
         </groups>
 
       <package>
           <packages>
-              <package name="api" />
+              <!--<package name="api" />-->
               <package name="ui" />
           </packages>
       </package>

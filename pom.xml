@@ -38,14 +38,6 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.2</version>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<source>1.8</source>-->
-                    <!--<target>1.8</target>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -55,12 +47,6 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <properties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>test</value>
-                        </property>
-                    </properties>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -74,13 +60,13 @@
                 </dependencies>
             </plugin>
             <!--<plugin>   DEPRECATED DO NOT USE. Works only with Allure 1 -->
-                <!--<groupId>io.qameta.allure</groupId>-->
-                <!--<artifactId>allure-maven</artifactId>-->
-                <!--<version>2.9</version>-->
-                <!--<configuration>-->
-                    <!--<reportVersion>2.6.0</reportVersion>-->
-                    <!--<resultsDirectory>allure-results</resultsDirectory>-->
-                <!--</configuration>-->
+            <!--<groupId>io.qameta.allure</groupId>-->
+            <!--<artifactId>allure-maven</artifactId>-->
+            <!--<version>2.9</version>-->
+            <!--<configuration>-->
+            <!--<reportVersion>2.6.0</reportVersion>-->
+            <!--<resultsDirectory>allure-results</resultsDirectory>-->
+            <!--</configuration>-->
             <!--</plugin>-->
         </plugins>
     </build>
@@ -133,6 +119,11 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-java-commons</artifactId>
             <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
         </dependency>
     </dependencies>
 
