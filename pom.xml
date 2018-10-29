@@ -55,6 +55,12 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <properties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>test</value>
+                        </property>
+                    </properties>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -67,28 +73,24 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.8</version>
-                <configuration>
-                    <reportVersion>2.3.1</reportVersion>
-                </configuration>
-            </plugin>
+            <!--<plugin>   DEPRECATED DO NOT USE. Works only with Allure 1 -->
+                <!--<groupId>io.qameta.allure</groupId>-->
+                <!--<artifactId>allure-maven</artifactId>-->
+                <!--<version>2.9</version>-->
+                <!--<configuration>-->
+                    <!--<reportVersion>2.6.0</reportVersion>-->
+                    <!--<resultsDirectory>allure-results</resultsDirectory>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
     <dependencies>
         <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-testng-adaptor</artifactId>
-            <version>1.5.4</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.7.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -126,6 +128,11 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.7.0</version>
         </dependency>
     </dependencies>
 

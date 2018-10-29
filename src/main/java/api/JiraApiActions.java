@@ -1,5 +1,6 @@
 package api;
 
+import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
 public class JiraApiActions {
@@ -21,17 +22,20 @@ public class JiraApiActions {
     return response;
   }
 
+  @Step
   public ValidatableResponse createIssue() {
     ValidatableResponse response = requestSender.post(createIssuePath, JiraApiJsonFixture.defaultIssue());
     return response;
   }
 
+  @Step
   public ValidatableResponse deleteIssue(String issueId) {
     deleteIssuePath = String.format(deleteIssuePath, issueId);
     ValidatableResponse response = requestSender.delete(deleteIssuePath, JiraApiJsonFixture.defaultIssue());
     return response;
   }
 
+  @Step
   public ValidatableResponse getIssue(String issueId) {
     getIssuePath = String.format(getIssuePath, issueId);
     ValidatableResponse response = requestSender.get(getIssuePath);

@@ -17,21 +17,22 @@ public class IssueTest {
     jiraApiActions = new JiraApiActions();
   }
 
-  @Test(groups = {TestGroups.ISSUE, TestGroups.REGRESSION})
+  @Test(groups = {TestGroups.ISSUE, TestGroups.REGRESSION, "Allure"})
   public void createIssueTest() {
-    ValidatableResponse response = jiraApiActions.createIssue();
-    response.statusCode(201); // Code 201: Returns a link to the created issue.
-    response.contentType(ContentType.JSON);
-    issueId = response.extract().path("id");
-    // TODO validate with regex that ticket it is present in the response
+        ValidatableResponse response = jiraApiActions.createIssue();
+        assert 201 == response.extract().statusCode(); // Code 201: Returns a link to the created issue.
+        response.statusCode(201); // Code 201: Returns a link to the created issue.
+        response.contentType(ContentType.JSON);
+        issueId = response.extract().path("id");
+        // TODO validate with regex that ticket it is present in the response
 
-    response = jiraApiActions.deleteIssue(issueId);
-    response.statusCode(204);
-    response.contentType(ContentType.JSON);
+        response = jiraApiActions.deleteIssue(issueId);
+        response.statusCode(204);
+        response.contentType(ContentType.JSON);
 
-    response = jiraApiActions.getIssue(issueId);
-    response.statusCode(404);
-    response.contentType(ContentType.JSON);
+        response = jiraApiActions.getIssue(issueId);
+        response.statusCode(404);
+        response.contentType(ContentType.JSON);
   }
 
   @AfterTest(groups = { TestGroups.ISSUE, TestGroups.REGRESSION })

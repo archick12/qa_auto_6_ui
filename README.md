@@ -1,5 +1,12 @@
 # qa_auto_6_ui
 
+
+# Allure report 
+1) mvn clean test
+2) allure generate allure-results -o allure-report
+
+To get allure report, please install allure command line tool according to doc - https://github.com/allure-framework/allure2 
+
 [![CircleCI](https://circleci.com/gh/archick12/qa_auto_6_ui.svg?style=svg)](https://circleci.com/gh/archick12/qa_auto_6_ui)
 [![Sonar](https://sonarcloud.io/api/project_badges/measure?project=archick12_qa_auto_6_ui&metric=bugs)](https://sonarcloud.io/api/project_badges/measure?project=archick12_qa_auto_6_ui&metric=bugs)
 [![Sonar](https://sonarcloud.io/api/project_badges/measure?project=archick12_qa_auto_6_ui&metric=code_smells)](https://sonarcloud.io/api/project_badges/measure?project=archick12_qa_auto_6_ui&metric=code_smells)
